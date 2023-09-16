@@ -32,7 +32,7 @@
 }
 
 .todo-app {
-  max-width: 540px;
+  width: 40%;
   background-color: #fff;
   padding: 40px 30px 70px;
   margin: auto;
@@ -97,7 +97,7 @@
 }
 
 .clear-btn {
-  width: 20%;
+  width: 90px;
   border: none;
   background: none;
   color: #000;
@@ -157,4 +157,14 @@
 
 #list span:hover {
   color: #dd2104;
+}
+
+@media only screen and (max-width: 600px) {
+  .todo-app {
+    width: 90%;
+  }
+
+  .clear-btn {
+    width: 90px;
+  }
 }
