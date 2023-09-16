@@ -3,6 +3,17 @@ const list = document.querySelector("#list");
 const message = document.querySelector("#message");
 const clearBtn = document.querySelector(".clear-btn");
 
+function loadList() {
+  const savedList = localStorage.getItem("taskList");
+  if (savedList) {
+    list.innerHTML = savedList;
+  }
+}
+
+function saveList() {
+  localStorage.setItem("taskList", list.innerHTML);
+}
+
 function addTask() {
   if (inputBox.value === "") {
     message.style.display = "block";
@@ -19,6 +30,8 @@ function addTask() {
     let span = document.createElement("span");
     span.innerHTML = "&times";
     li.appendChild(span);
+
+    saveList();
   }
 }
 
@@ -31,8 +44,10 @@ inputBox.addEventListener("keydown", function (e) {
 list.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
+    saveList();
   } else if (e.target.tagName === "SPAN") {
     e.target.parentElement.remove();
+    saveList();
   }
 });
 
@@ -40,6 +55,9 @@ clearBtn.addEventListener("click", function () {
   const liElements = list.querySelectorAll("li");
   liElements.forEach((li) => {
     li.remove();
-    clearBtn.style.display = "none";
   });
+  clearBtn.style.display = "none";
+  saveList();
 });
+
+loadList();

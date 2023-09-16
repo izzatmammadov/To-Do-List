@@ -16,6 +16,7 @@
 
   ::-webkit-scrollbar-thumb {
     background: #6dd5ed;
+    border-radius: 10px;
   }
 }
 
@@ -60,6 +61,7 @@
 }
 
 .inner-container input {
+  width: 100%;
   padding: 10px;
   border: none;
   background-color: transparent;
